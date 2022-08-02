@@ -41,3 +41,9 @@ inputs:
   environment:
     variables: # 根据自己的需要修改
       Ray_BiliBiliCookies__1: 123 # cookie，必填
+  environment:
+    variables: # 根据自己的需要修改
+      Ray_BiliBiliCookies__1: "buvid3=CD10E19F-144C-3723-B069-953EE2CAE7A210504infoc; i-wanna-go-back=-1; _uuid=171089845-1F12-A2BB-4294-26109D9162710C09939infoc; buvid4=E51EB4E0-18E4-4098-CC4E-50BB85C772D011320-022040814-BpDlDnukVD27dyZq+3Rfdw%3D%3D; rpdid=|(um|klY|||~0J'uYRmR|RJ|J; CURRENT_BLACKGAP=0; nostalgia_conf=-1; buvid_fp_plain=undefined; fingerprint=cb421009f677aed1dfe5a55b26d796d8; SESSDATA=40b47068%2C1666851138%2C9a4e1%2A41; bili_jct=f1a4a7433f5842c304bb633854ec72a6; DedeUserID=39005652; DedeUserID__ckMd5=57c11811a2fc3ee0; sid=cg41x7o1; buvid_fp=cb421009f677aed1dfe5a55b26d796d8; b_ut=5; hit-dyn-v2=1; LIVE_BUVID=AUTO1216518155688600; blackside_state=0; CURRENT_QUALITY=80; PVID=1; bp_t_offset_39005652=687463688165130249; CURRENT_FNVAL=4048; innersign=0; b_lsid=B9F884E5_1825DA08905; b_timer=%7B%22ffp%22%3A%7B%22333.1007.fp.risk_CD10E19F%22%3A%221825DA08ABD%22%7D%7D; bp_video_offset_39005652=689737830398689400" # cookie，必填
+      Ray_Security__RandomSleepMaxMin: 20
+      Ray_Security__IntervalSecondsBetweenRequestApi: 20  
+      
