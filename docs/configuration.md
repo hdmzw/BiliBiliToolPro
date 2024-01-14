@@ -30,6 +30,7 @@
         - [3.3.7. 充电对象](#337-充电对象)
         - [3.3.8. 每月几号自动领取会员权益](#338-每月几号自动领取会员权益)
         - [3.3.9. 每月几号进行直播中心银瓜子兑换硬币](#339-每月几号进行直播中心银瓜子兑换硬币)
+        - [3.3.10. Lv6后开启硬币白嫖模式](#3310-lv6后开启硬币白嫖模式)
     - [3.4. 天选时刻抽奖相关](#34-天选时刻抽奖相关)
         - [3.4.1. 根据关键字排除奖品](#341-根据关键字排除奖品)
         - [3.4.2. 根据关键字指定奖品](#342-根据关键字指定奖品)
@@ -44,6 +45,7 @@
         - [3.6.2. Telegram机器人](#362-telegram机器人)
             - [3.6.2.1. botToken](#3621-bottoken)
             - [3.6.2.2. chatId](#3622-chatid)
+            - [3.6.2.3. proxy](#3623-proxy)
         - [3.6.3. 企业微信机器人](#363-企业微信机器人)
             - [3.6.3.1. webHookUrl](#3631-webhookurl)
         - [3.6.4. 钉钉机器人](#364-钉钉机器人)
@@ -70,6 +72,9 @@
     - [3.7. 日志相关](#37-日志相关)
         - [3.7.1. Console日志输出等级](#371-console日志输出等级)
         - [3.7.2. Console日志输出样式](#372-console日志输出样式)
+        - [3.7.3. 定时任务相关](#373-定时任务相关)
+        - [3.7.4. 定时任务](#374-定时任务)
+        - [3.7.5. Crontab](#375-crontab)
 
 <!-- /TOC -->
 
@@ -87,7 +92,7 @@
 <a id="markdown-12-方式二命令启动时通过命令行参数配置" name="12-方式二命令启动时通过命令行参数配置"></a>
 ### 1.2. 方式二：命令启动时通过命令行参数配置
 
-在使用命令行启动时，可使用`-key=value`的形式附加配置，所有可用的命令行参数均在 [命令行参数映射](../src/Ray.BiliBiliTool.Console/commandLineMappings.json) 文件中。
+在使用命令行启动时，可使用`-key=value`的形式附加配置，所有可用的命令行参数均在 [命令行参数映射表](../src/Ray.BiliBiliTool.Config/Constants.cs#L76-L105) 中。
 
 * 使用跨平台的依赖包
 
@@ -421,6 +426,17 @@ export Ray_Serilog__WriteTo__9__Args__token="abcde"
 | 环境变量   | `Ray_DailyTaskConfig__DayOfExchangeSilver2Coin` |
 | GitHub Secrets  | `DayOfExchangeSilver2Coin` |
 
+<a id="markdown-3310-lv6后开启硬币白嫖模式" name="3310-lv6后开启硬币白嫖模式"></a>
+#### 3.3.10. Lv6后开启硬币白嫖模式
+
+|   TITLE   | CONTENT   |
+| ---------- | -------------- |
+| 配置Key | `DailyTaskConfig:SaveCoinsWhenLv6` |
+| 值域   | [true,false]，true表示开启，Lv6的账号不会投币 |
+| 默认值   | false |
+| 环境变量   | `Ray_DailyTaskConfig__SaveCoinsWhenLv6` |
+| GitHub Secrets  |  |
+
 <a id="markdown-34-天选时刻抽奖相关" name="34-天选时刻抽奖相关"></a>
 ### 3.4. 天选时刻抽奖相关
 
@@ -557,6 +573,20 @@ P.S.访问链接需要能访问“外网”，有vpn的挂vpn。
 | 命令行示范   | 无 |
 | GitHub Secrets  | `PUSHTGCHATID`|
 
+<a id="markdown-3623-proxy" name="3623-proxy"></a>
+##### 3.6.2.3. proxy
+
+使用代理
+
+|   TITLE   | CONTENT   |
+| ---------- | -------------- |
+| 配置Key | `Serilog:WriteTo:3:Args:proxy` |
+| 值域   | 一串字符串，格式为user:password@host:port |
+| 默认值   | 空 |
+| 环境变量   | `Ray_Serilog__WriteTo__3__Args__proxy` |
+| 命令行示范   | 无 |
+| GitHub Secrets  | ``|
+
 <a id="markdown-363-企业微信机器人" name="363-企业微信机器人"></a>
 #### 3.6.3. 企业微信机器人
 
@@ -611,7 +641,7 @@ P.S.访问链接需要能访问“外网”，有vpn的挂vpn。
 | 配置Key | `Serilog:WriteTo:6:Args:turboScKey` |
 | 值域   | 一串字符串 |
 | 默认值   | 空 |
-| 环境变量   | `Ray_Serilog__WriteTo__6__Args__turboScKey=abcdefg` |
+| 环境变量   | `Ray_Serilog__WriteTo__6__Args__turboScKey` |
 | GitHub Secrets  | `PUSHSERVERTSCKEY` |
 
 <a id="markdown-366-酷推" name="366-酷推"></a>
@@ -642,6 +672,7 @@ https://cp.xuthus.cc/
 | 默认值   | 空 |
 | 环境变量   | `Ray_Serilog__WriteTo__8__Args__api` |
 | GitHub Secrets  | `PUSHOTHERAPI` |
+
 <a id="markdown-3672-placeholder" name="3672-placeholder"></a>
 ##### 3.6.7.2. placeholder
 
@@ -652,6 +683,7 @@ https://cp.xuthus.cc/
 | 默认值   | 空 |
 | 环境变量   | `Ray_Serilog__WriteTo__8__Args__placeholder` |
 | GitHub Secrets  | `PUSHOTHERPLACEHOLDER` |
+
 <a id="markdown-3673-bodyjsontemplate" name="3673-bodyjsontemplate"></a>
 ##### 3.6.7.3. bodyJsonTemplate
 
@@ -828,3 +860,39 @@ BiliBiliTool 使用 Serilog 作为日志组件，所以可以参考 Serilog 的�
 | 环境变量   | `Ray_Serilog__WriteTo__0__Args__outputTemplate` |
 | GitHub Secrets  | `CONSOLELOGTEMPLATE` |
 
+<a id="markdown-373-定时任务相关" name="373-定时任务相关"></a>
+#### 3.7.3. 定时任务相关
+适用于 [方式四：docker容器化运行（推荐）](../docker/README.md)，用于配置定时任务。
+
+<a id="markdown-374-定时任务" name="374-定时任务"></a>
+#### 3.7.4. 定时任务
+以下环境变量的值应为有效的 [cron 表达式](https://docs.oracle.com/cd/E12058_01/doc/doc.1014/e12030/cron_expressions.htm)。
+
+当被设置时，对应定时任务将开启。
+
+|   环境变量   | 定时任务   |
+| ---------- | -------------- |
+| `Ray_DailyTaskConfig__Cron` | 每日任务 |
+| `Ray_LiveLotteryTaskConfig__Cron` | 天选时刻抽奖 |
+| `Ray_UnfollowBatchedTaskConfig__Cron` | 批量取关 |
+| `Ray_VipBigPointConfig__Cron` | 大会员大积分 |
+
+<a id="markdown-375-crontab" name="375-crontab"></a>
+#### 3.7.5. Crontab
+若该环境变量被设置，其值将直接追加在 cron 文件的末尾，可用于设置额外的定时任务。
+
+|   TITLE   | CONTENT   |
+| ---------- | -------------- |
+| 值域   | 一串字符串 |
+| 默认值   | 空 |
+| 环境变量   | `Ray_Crontab` |
+
+使用例
+
+```yaml
+environment:
+  Ray_BiliBiliCookies: somecookies
+  Ray_Crontab: |
+    0 15 * * * dotnet /app/Ray.BiliBiliTool.Console.dll --runTasks=Daily >> /var/log/cron.log
+    0 22 * * * dotnet /app/Ray.BiliBiliTool.Console.dll --runTasks=LiveLottery >> /var/log/cron.log
+```
